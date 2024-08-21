@@ -1,0 +1,16 @@
+server:
+  port: 9002
+  feign:
+    okhttp:
+      enabled: true # 开启OKHttp连接池⽀持
+
+asc:
+  swagger:
+    title: 算法服务接⼝⽂档
+    package: org.qinian.controller
+  db:
+    database: algorithm_db
+
+baidu:
+  ak: 434qLmuTjmxKCmjeA6VEuEMl
+  sk: GxoqLvQ385b5Hn3emqS6Z5Q7m2f566M4

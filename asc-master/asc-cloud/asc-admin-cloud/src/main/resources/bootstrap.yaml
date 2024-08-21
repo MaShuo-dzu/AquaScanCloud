@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: admin-service
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8858
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+
+#使用nacos
+eureka:
+  client:
+    enabled: false

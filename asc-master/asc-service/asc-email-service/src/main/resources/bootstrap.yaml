@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: email-service
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml # ⽂件后缀名
+        shared-configs: # 共享配置
+          - dataId: shared-log.yaml # 共享⽇志配置
+          - dataId: shared-swagger.yaml # 共享⽇志配置
+          - dataId: shared-rabbitmq.yaml # 共享mq配置
+          - dataId: shared-admin.yaml
+
+  rabbitmq:
+    host: localhost # 你的虚拟机IP
+    port: 5672 # 端⼝
+    virtual-host: / # 虚拟主机
+    username: mashuo # ⽤⼾名
+    password: 123456 # 密码
+
+server:
+  port: 9007
+  feign:
+    okhttp:
+      enabled: true # 开启OKHttp连接池⽀持

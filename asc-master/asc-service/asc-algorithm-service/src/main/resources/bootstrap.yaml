@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: algorithm-service
+
+  rabbitmq:
+    host: localhost # 你的虚拟机IP
+    port: 5672 # 端⼝
+    virtual-host: / # 虚拟主机
+    username: mashuo # ⽤⼾名
+    password: 123456 # 密码
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml # ⽂件后缀名
+        shared-configs: # 共享配置
+          - dataId: shared-jdbc.yaml # 共享mybatis配置
+          - dataId: shared-log.yaml # 共享⽇志配置
+          - dataId: shared-swagger.yaml # 共享⽇志配置
+          - dataId: shared-rabbitmq.yaml # 共享mq配置
+          - dataId: shared-admin.yaml

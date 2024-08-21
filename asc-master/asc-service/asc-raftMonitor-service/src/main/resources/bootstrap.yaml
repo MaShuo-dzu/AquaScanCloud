@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: raftMonitor-service
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml # ⽂件后缀名
+        shared-configs: # 共享配置
+          - dataId: shared-jdbc.yaml # 共享mybatis配置
+          - dataId: shared-log.yaml # 共享⽇志配置
+          - dataId: shared-swagger.yaml # 共享⽇志配置
+          - dataId: shared-rabbitmq.yaml # 共享mq配置
+          - dataId: shared-admin.yaml

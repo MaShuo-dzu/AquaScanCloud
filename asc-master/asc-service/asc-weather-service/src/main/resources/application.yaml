@@ -1,0 +1,17 @@
+server:
+  port: 9006
+  feign:
+    okhttp:
+      enabled: true # 开启OKHttp连接池⽀持
+
+spring:
+  task:
+    scheduling:
+      enabled: true
+
+asc:
+  swagger:
+    title: 天气服务接⼝⽂档
+    package: org.qinian.controller
+  db:
+    database: weather_db
