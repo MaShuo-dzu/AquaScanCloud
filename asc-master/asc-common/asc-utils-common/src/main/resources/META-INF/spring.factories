@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ org.qinian.config.MybatisPlusConfig,\
+ org.qinian.config.RedisConfig, \
+ org.qinian.config.MvcConfig, \
+ org.qinian.config.SecurityConfig,\
+ org.qinian.config.RabbitMQConfig,\
+ org.qinian.utils.JwtTool

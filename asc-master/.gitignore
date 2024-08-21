@@ -1,0 +1,6 @@
+/.idea/
+/logs/
+/target/
+/asc-service/asc-algorithm-service/target/
+/asc-service/asc-email-service/target/
+/asc-common/asc-utils-common/target/

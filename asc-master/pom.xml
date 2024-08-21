@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.qinian</groupId>
+
+    <artifactId>asc-master</artifactId>
+
+    <version>${qinian.asc-master.version}</version>
+
+    <!--      打包方式      -->
+    <packaging>pom</packaging>
+
+    <!--      子模块      -->
+    <modules>
+        <module>asc-api</module>
+        <module>asc-gateway</module>
+        <module>asc-service</module>
+        <module>asc-common</module>
+        <module>asc-cloud</module>
+    </modules>
+
+    <!--      父工程      -->
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-build</artifactId>
+        <version>4.1.0</version>
+        <relativePath/>
+    </parent>
+
+    <!--      属性      -->
+    <properties>
+        <qinian.asc-master.version>1.0.0</qinian.asc-master.version>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>3.3.2</spring-boot.version>
+        <spring-framework.version>6.1.11</spring-framework.version>
+        <spring-boot-admin.version>3.1.0</spring-boot-admin.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2023.0.1.2</spring-cloud-alibaba.version>
+        <spring-ai.version>0.8.1</spring-ai.version>
+        <swagger.fox.version>3.0.0</swagger.fox.version>
+        <swagger.core.version>2.2.20</swagger.core.version>
+        <redisson.version>3.33.0</redisson.version>
+        <pagehelper.boot.version>2.0.0</pagehelper.boot.version>
+        <tobato.version>1.27.2</tobato.version>
+        <kaptcha.version>2.3.3</kaptcha.version>
+        <druid.version>1.2.23</druid.version>
+        <dynamic-ds.version>4.3.1</dynamic-ds.version>
+        <commons.io.version>2.16.1</commons.io.version>
+        <velocity.version>2.3</velocity.version>
+        <fastjson.version>2.0.52</fastjson.version>
+        <jjwt.version>0.12.6</jjwt.version>
+        <minio.version>8.5.11</minio.version>
+        <poi.version>5.3.0</poi.version>
+        <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
+    </properties>
+
+    <!--      依赖      -->
+    <dependencies>
+        <!--    bootstrap 启动器    -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <!--    lombok    -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--    测试    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vaadin.external.google</groupId>
+                    <artifactId>android-json</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <!--     Spring Cloud 依赖管理     -->
+    <dependencyManagement>
+        <dependencies>
+            <!--    Spring Framework Dependencies    -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--    Spring Boot Dependencies    -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--    Spring Cloud Alibaba Dependencies    -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--    Spring Cloud  Dependencies    -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--    Spring Cloud Ai    -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--    Swagger Models    -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.fox.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>2.1.2</version>
+            </dependency>
+
+            <!--    Swagger Annotations    -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+
+            <!--    验证码    -->
+            <dependency>
+                <groupId>pro.fessional</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <!--    pagehelper 分页插件    -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+
+            <!--    io 常用工具类    -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!--    excel 工具    -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!--    代码生成使用模板    -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
+            <!--    JSON 解析器和生成器    -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!--    JWT API    -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!--    线程传递值    -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+
+            <!--    Asc API    -->
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-domain-api</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-system-api</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <!--    Asc Cloud    -->
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-seata-cloud</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-admin-cloud</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <!--    Asc Common    -->
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-utils-common</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <!--    Asc Gateway    -->
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-api-gateway</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <!--    Asc Service    -->
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-alert-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-algorithm-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-fishRaft-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-raftMonitor-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-user-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.qinian</groupId>
+                <artifactId>asc-weather-service</artifactId>
+                <version>${qinian.asc-master.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--      仓库      -->
+    <repositories>
+        <!--    Spring Milestones    -->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!--    阿里云仓库    -->
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!--    Maven 仓库    -->
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!--      插件仓库      -->
+    <pluginRepositories>
+        <!--    Spring Milestones    -->
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+
+        <!--    阿里云仓库    -->
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+
+        <!--    Maven 仓库    -->
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

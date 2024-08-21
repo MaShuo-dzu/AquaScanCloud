@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.qinian</groupId>
+        <artifactId>asc-master</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>asc-service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>asc-user-service</module>
+        <module>asc-alert-service</module>
+        <module>asc-algorithm-service</module>
+        <module>asc-fishRaft-service</module>
+        <module>asc-raftMonitor-service</module>
+        <module>asc-weather-service</module>
+        <module>asc-email-service</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- SpringCloud Alibaba Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- SpringCloud Alibaba Nacos Config -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- SpringBoot Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- SpringBoot Actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--    common-base 依赖    -->
+        <dependency>
+            <groupId>org.qinian</groupId>
+            <artifactId>asc-utils-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.qinian</groupId>
+            <artifactId>asc-domain-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.qinian</groupId>
+            <artifactId>asc-system-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

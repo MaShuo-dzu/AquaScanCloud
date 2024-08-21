@@ -1,0 +1,20 @@
+server:
+  port: 9004
+  feign:
+    okhttp:
+      enabled: true # 开启OKHttp连接池⽀持
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1 # 你的虚拟机IP
+    port: 5672 # 端⼝
+    virtual-host: / # 虚拟主机
+    username: root # ⽤⼾名
+    password: root # 密码
+
+asc:
+  swagger:
+    title: 渔排点监测服务接⼝⽂档
+    package: org.qinian.controller
+  db:
+    database: fishraftmonitor_db

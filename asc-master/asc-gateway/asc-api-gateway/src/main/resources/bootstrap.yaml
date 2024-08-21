@@ -1,0 +1,86 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
+  main:
+    web-application-type: reactive
+
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml # ⽂件后缀名
+        shared-configs: # 共享配置
+          - dataId: shared-rabbitmq.yaml # 共享mq配置
+          - dataId: shared-admin.yaml
+    sentinel:
+      transport:
+        dashboard: localhost:8858
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: 'http://localhost:8081'
+            allowed-methods: '*'
+            allowed-headers: '*'
+            allow-credentials: true
+            max-age: 3600
+      routes:
+        - id: alert
+          uri: lb://alert-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/alert-info/**,/alert-type/**
+
+        - id: algorithm
+          uri: lb://algorithm-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/algorithm/**, /recognition-info/**
+
+        - id: email
+          uri: lb://email-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/code/**, /email/**
+
+        - id: fishRaft
+          uri: lb://fishRaft-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/fish-raft-point/**,/location/**
+
+        - id: raftMonitor
+          uri: lb://raftMonitor-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/fish-raft-monitor/**
+
+        - id: user
+          uri: lb://user-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/admin/**, /business-license/**, /fishermen/**, /fishing-platoon/**, /identity-card/**
+
+        - id: weather
+          uri: lb://weather-service
+#          filters:
+#            - PrefixPath=/api
+          predicates:
+            - Path=/weather-monitor/**
+
+
+

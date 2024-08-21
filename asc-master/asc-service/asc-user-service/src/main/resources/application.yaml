@@ -1,0 +1,12 @@
+server:
+  port: 9005
+  feign:
+    okhttp:
+      enabled: true # 开启OKHttp连接池⽀持
+
+asc:
+  swagger:
+    title: 用户服务接⼝⽂档
+    package: org.qinian.controller
+  db:
+    database: user_db
