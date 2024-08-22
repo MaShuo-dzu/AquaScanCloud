@@ -90,6 +90,7 @@ public class FishRaftPointController {
     // 查询所有渔排点
     @GetMapping
     public Result getAllFishRafts() {
+        System.out.println("获取所有渔排点信息 --> " + LocalDateTime.now());
         List<FishRaftPoint> fishRaftPointList = fishRaftPointService.list();
 
         // create vo

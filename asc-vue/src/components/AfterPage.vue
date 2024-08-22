@@ -15,6 +15,7 @@
   </div>
 </template>
 
+
 <script>
 import { userUpdatePassword, userLogout } from '@/api/userMG.js';
 import { ElMessage } from 'element-plus'

@@ -25,7 +25,7 @@ public class WeatherUtil {
         HttpResponse response = httpClient.execute(request);
         // 读取响应内容
         String result = EntityUtils.toString(response.getEntity());
-        System.out.println(result);
+//        System.out.println(result);
         // 关闭HttpClient连接
         httpClient.close();
 
